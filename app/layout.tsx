@@ -2,21 +2,25 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shiwen-wang.iiesyssec.chatgpt.site'),
-  title: '王诗文 | Shiwen Wang',
-  description: '王诗文的学术个人主页。研究方向包括虚拟化和智能系统安全、机密计算。',
-  icons: { icon: '/shiwen-wang.png', apple: '/shiwen-wang.png' },
+  metadataBase: new URL('https://wonsivan.github.io/Homepage/'),
+  title: 'Shiwen Wang | 王诗文',
+  description: 'Academic homepage of Shiwen Wang, a Ph.D. candidate researching virtualization security, AI systems security, and confidential computing.',
+  icons: {
+    icon: 'https://wonsivan.github.io/Homepage/shiwen-wang.png',
+    apple: 'https://wonsivan.github.io/Homepage/shiwen-wang.png',
+  },
   openGraph: {
-    title: '王诗文 | Shiwen Wang',
+    title: 'Shiwen Wang | 王诗文',
     description: 'Ph.D. Candidate researching virtualization, AI systems security, and confidential computing.',
     type: 'website',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: '王诗文 | Shiwen Wang' }],
+    url: 'https://wonsivan.github.io/Homepage/',
+    images: [{ url: 'https://wonsivan.github.io/Homepage/og.png', width: 1200, height: 630, alt: 'Shiwen Wang | 王诗文' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '王诗文 | Shiwen Wang',
+    title: 'Shiwen Wang | 王诗文',
     description: 'Ph.D. Candidate researching virtualization, AI systems security, and confidential computing.',
-    images: ['/og.png'],
+    images: ['https://wonsivan.github.io/Homepage/og.png'],
   },
 };
 

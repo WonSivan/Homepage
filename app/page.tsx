@@ -84,6 +84,7 @@ function Heading({ pair }: { pair: string[] }) {
 export default function Home() {
   const [locale, setLocale] = useState<Locale>('en');
   const t = content[locale];
+  const assetBase = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   useEffect(() => { document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en'; }, [locale]);
 
   return (
@@ -106,7 +107,7 @@ export default function Home() {
         <aside className="profile-column">
           <figure className="portrait-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/shiwen-wang.png" alt={locale === 'zh' ? '王诗文的照片' : 'Portrait of Shiwen Wang'} />
+            <img src={`${assetBase}/shiwen-wang.png`} alt={locale === 'zh' ? '王诗文的照片' : 'Portrait of Shiwen Wang'} />
           </figure>
           <h1>{t.name}</h1>
           <p className="hero-role">{t.role}</p>
