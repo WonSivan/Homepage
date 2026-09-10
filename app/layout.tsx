@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shiwen-wang.chummy-bell-2902.chatgpt.site'),
+  metadataBase: new URL('https://shiwen-wang.iiesyssec.chatgpt.site'),
   title: '王诗文 | Shiwen Wang',
   description: '王诗文的学术个人主页。研究方向包括虚拟化和智能系统安全、机密计算。',
   icons: { icon: '/shiwen-wang.png', apple: '/shiwen-wang.png' },
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

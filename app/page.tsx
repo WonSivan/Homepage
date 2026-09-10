@@ -82,7 +82,7 @@ function Heading({ pair }: { pair: string[] }) {
 }
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>('zh');
+  const [locale, setLocale] = useState<Locale>('en');
   const t = content[locale];
   useEffect(() => { document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en'; }, [locale]);
 
