@@ -127,6 +127,7 @@ export default function Home() {
           <h1>{t.name}</h1>
           <p className="hero-role">{t.role}</p>
           <div className="affiliations">{t.affiliations.map((x) => <p key={x}>{x}</p>)}</div>
+          <p className="contact-email"><span>{locale === 'zh' ? '邮箱' : 'Email'}: </span><a href="mailto:wangshiwen@iie.ac.cn">wangshiwen@iie.ac.cn</a></p>
           <div className="research-block">
             <p className="micro-label">{t.interests}</p>
             <ul>{t.fields.map((x) => <li key={x}>{x}</li>)}</ul>
