@@ -3,6 +3,18 @@
 import { useEffect, useState } from 'react';
 
 type Locale = 'zh' | 'en';
+type CCFRank = 'A' | 'B' | 'C';
+
+const advisorUrl = 'https://people.ucas.ac.cn/~hourui';
+const scholarUrl = 'https://scholar.google.com/citations?user=k7cC6BYAAAAJ';
+
+// CCF recommended venues: https://www.ccf.org.cn/Academic_Evaluation/By_category/
+const ccfRanks: Record<string, CCFRank> = {
+  'IEEE TC': 'A',
+  'USENIX Security': 'A',
+  ICCD: 'B',
+  DAC: 'A',
+};
 
 const publications = [
   {
@@ -121,7 +133,7 @@ export default function Home() {
         <div className="main-column">
           <section className="content-section intro-section" id="about">
             <Heading pair={t.headings[0]} />
-            <p className="about-text">{t.about}</p>
+            <p className="about-text">{t.about.split(locale === 'zh' ? '侯锐' : 'Rui Hou').map((part, i) => <span key={i}>{i > 0 && <a href={advisorUrl} target="_blank" rel="noreferrer">{locale === 'zh' ? '侯锐' : 'Rui Hou'}</a>}{part}</span>)}</p>
           </section>
 
           <section className="content-section" id="news">
@@ -134,13 +146,13 @@ export default function Home() {
 
           <section className="content-section" id="publications">
             <Heading pair={t.headings[2]} />
-            <p className="pub-note">{t.pubNote}</p>
+            <p className="pub-note">{t.pubNote}<span aria-hidden="true"> · </span><a href={scholarUrl} target="_blank" rel="noreferrer">Google Scholar</a></p>
             <div className="publication-list">
               {publications.map((p) => (
                 <article className="publication" key={p.title}>
-                  <div className="publication-meta"><span className="venue-tag">{p.tag}</span><span>{p.year}</span>{p.award && <span className="award-label">{locale === 'zh' ? p.awardZh : p.award}</span>}</div>
+                  <div className="publication-meta"><span className="venue-tag">{p.tag}</span><span className={`ccf-tag ccf-${ccfRanks[p.tag].toLowerCase()}`}>CCF-{ccfRanks[p.tag]}</span><span>{p.year}</span>{p.award && <span className="award-label">{locale === 'zh' ? p.awardZh : p.award}</span>}</div>
                   <h3><a href={p.link} target="_blank" rel="noreferrer">{p.title}</a></h3>
-                  <p className="authors">{p.authors.map((a, j) => <span key={a}><span className={a === 'Shiwen Wang' ? 'self-author' : ''}>{a}</span>{j < p.authors.length - 1 ? ', ' : ''}</span>)}</p>
+                  <p className="authors">{p.authors.map((a, j) => <span key={a}>{a === 'Rui Hou' ? <a href={advisorUrl} target="_blank" rel="noreferrer">{a}</a> : <span className={a === 'Shiwen Wang' ? 'self-author' : ''}>{a}</span>}{j < p.authors.length - 1 ? ', ' : ''}</span>)}</p>
                   <p className="venue">{locale === 'zh' && p.venueZh ? p.venueZh : p.venue}</p>
                 </article>
               ))}
